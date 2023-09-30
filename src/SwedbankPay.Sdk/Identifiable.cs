@@ -18,7 +18,7 @@ public class Identifiable : IIdentifiable
     /// Instantiates and sets the <see cref="Id"/> of the <see cref="Identifiable"/>.
     /// </summary>
     /// <param name="id">The unique ID of this resource.</param>
-    internal Identifiable(string? id)
+    internal Identifiable(string id)
     {
         Id = new Uri(id, UriKind.RelativeOrAbsolute);
     }

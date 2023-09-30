@@ -30,7 +30,7 @@ public static class HttpClientExtensions
         return JsonSerializer.Deserialize<T>(responseString, JsonSerialization.JsonSerialization.Settings);
     }
 
-    internal static async Task<T> SendAndProcessAsync<T>(this HttpClient httpClient, HttpMethod httpMethod, Uri uri,
+    private static async Task<T?> SendAndProcessAsync<T>(this HttpClient httpClient, HttpMethod httpMethod, Uri uri,
         object? payload)
         where T : class
     {
@@ -43,12 +43,6 @@ public static class HttpClientExtensions
         }
 
         using var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
-
-        string? BuildErrorMessage(string? httpResponseBody)
-        {
-            return
-                $"{httpRequestMessage.Method}: {httpRequestMessage.RequestUri} failed with error code {httpResponseMessage.StatusCode} using bearer token {httpClient.DefaultRequestHeaders?.Authorization?.Parameter}. Response body: {httpResponseBody}";
-        }
 
         string? httpResponseContent = string.Empty;
         try
@@ -88,21 +82,27 @@ public static class HttpClientExtensions
             ex.Data.Add(nameof(httpResponseContent), httpResponseContent);
             throw ex;
         }
+
+        string BuildErrorMessage(string? httpResponseBody)
+        {
+            return
+                $"{httpRequestMessage.Method}: {httpRequestMessage.RequestUri} failed with error code {httpResponseMessage.StatusCode} using bearer token {httpClient.DefaultRequestHeaders?.Authorization?.Parameter}. Response body: {httpResponseBody}";
+        }
     }
 
-    private static string? BuildErrorMessage(string httpResponseBody, Uri uri, HttpResponseMessage httpResponse)
+    private static string BuildErrorMessage(string httpResponseBody, Uri uri, HttpResponseMessage httpResponse)
     {
         return
             $"GET: {uri} failed with error code {httpResponse.StatusCode}. Response body: {httpResponseBody}";
     }
 
-    public static Task<T> PostAsJsonAsync<T>(this HttpClient httpClient, Uri uri, object? payload)
+    public static Task<T?> PostAsJsonAsync<T>(this HttpClient httpClient, Uri uri, object? payload)
         where T : class
     {
         return httpClient.SendAndProcessAsync<T>(HttpMethod.Post, uri, payload);
     }
 
-    public static Task<T> SendAsJsonAsync<T>(this HttpClient httpClient, HttpMethod httpMethod, Uri uri,
+    public static Task<T?> SendAsJsonAsync<T>(this HttpClient httpClient, HttpMethod httpMethod, Uri uri,
         object? payload = null)
         where T : class
     {

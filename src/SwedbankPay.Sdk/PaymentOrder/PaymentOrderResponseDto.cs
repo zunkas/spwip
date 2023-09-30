@@ -1,17 +1,17 @@
 namespace SwedbankPay.Sdk.PaymentOrder;
 
 
-public class PaymentOrderResponseDto
+internal class PaymentOrderResponseDto
 {
     public PaymentOrderResponseItemDto PaymentOrder { get; set; }
     public OperationsResponseDto[] Operations { get; set; }
 }
 
-public class PaymentOrderResponseItemDto
+internal class PaymentOrderResponseItemDto
 {
     public string Id { get; set; }
-    public string Created { get; set; }
-    public string Updated { get; set; }
+    public DateTime Created { get; set; }
+    public DateTime Updated { get; set; }
     public string Operation { get; set; }
     public string Status { get; set; }
     public string Currency { get; set; }

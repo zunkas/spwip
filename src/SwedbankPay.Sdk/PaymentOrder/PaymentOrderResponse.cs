@@ -2,7 +2,7 @@ namespace SwedbankPay.Sdk.PaymentOrder;
 
 public class PaymentOrderResponse
 {
-    public PaymentOrderResponse(PaymentOrderResponseDto paymentOrderResponseDto, HttpClient httpClient)
+    internal PaymentOrderResponse(PaymentOrderResponseDto paymentOrderResponseDto, HttpClient httpClient)
     {
         PaymentOrder = new PaymentOrder(paymentOrderResponseDto.PaymentOrder);
         Operations = paymentOrderResponseDto.Operations.Select(x => new Operations(x)).ToArray();
@@ -15,7 +15,7 @@ public class PaymentOrderResponse
 
 public class PaymentOrder
 {
-    public PaymentOrder(PaymentOrderResponseItemDto paymentOrderResponseItemDto)
+    internal PaymentOrder(PaymentOrderResponseItemDto paymentOrderResponseItemDto)
     {
         Id = paymentOrderResponseItemDto.Id;
         Created = paymentOrderResponseItemDto.Created;
@@ -45,8 +45,8 @@ public class PaymentOrder
     }
 
     public string Id { get; }
-    public string Created { get; }
-    public string Updated { get; }
+    public DateTime Created { get; }
+    public DateTime Updated { get; }
     public string Operation { get; }
     public string Status { get; }
     public string Currency { get; }
@@ -73,86 +73,86 @@ public class PaymentOrder
 
 public class PayerResponse : Identifiable
 {
-    public PayerResponse(PayerResponseDto payer) : base(payer.id)
+    internal PayerResponse(PayerResponseDto payer) : base(payer.id)
     {
     }
 }
 
 public class OrderItemsResponse : Identifiable
 {
-    public OrderItemsResponse(OrderItemResponseDto orderItems) : base(orderItems.id)
+    internal OrderItemsResponse(OrderItemResponseDto orderItems) : base(orderItems.id)
     {
     }
 }
 
 public class HistoryResponse : Identifiable
 {
-    public HistoryResponse(HistoryResponseDto historyResponse) : base(historyResponse.id)
+    internal HistoryResponse(HistoryResponseDto historyResponse) : base(historyResponse.id)
     {
     }
 }
 
 public class FailedResponse : Identifiable
 {
-    public FailedResponse(FailedResponseDto failedResponse) : base(failedResponse.id)
+    internal FailedResponse(FailedResponseDto failedResponse) : base(failedResponse.id)
     {
     }
 }
 
 public class AbortedResponse : Identifiable
 {
-    public AbortedResponse(AbortedResponseDto abortedResponse) : base(abortedResponse.id)
+    internal AbortedResponse(AbortedResponseDto abortedResponse) : base(abortedResponse.id)
     {
     }
 }
 
 public class PaidResponse : Identifiable
 {
-    public PaidResponse(PaidResponseDto paidResponse) : base(paidResponse.id)
+    internal PaidResponse(PaidResponseDto paidResponse) : base(paidResponse.id)
     {
     }
 }
 
 public class CancelledResponse : Identifiable
 {
-    public CancelledResponse(CancelledResponseDto cancelledResponse) : base(cancelledResponse.id)
+    internal CancelledResponse(CancelledResponseDto cancelledResponse) : base(cancelledResponse.id)
     {
     }
 }
 
 public class FinancialTransactionsResponse : Identifiable
 {
-    public FinancialTransactionsResponse(FinancialTransactionsResponseDto financialTransactionsResponse) : base(financialTransactionsResponse.id)
+    internal FinancialTransactionsResponse(FinancialTransactionsResponseDto financialTransactionsResponse) : base(financialTransactionsResponse.id)
     {
     }
 }
 
 public class FailedAttemptsResponse : Identifiable
 {
-    public FailedAttemptsResponse(FailedAttemptsResponseDto failedAttemptsResponse) : base(failedAttemptsResponse.id)
+    internal FailedAttemptsResponse(FailedAttemptsResponseDto failedAttemptsResponse) : base(failedAttemptsResponse.id)
     {
     }
 }
 
 public class MetadataResponse : Identifiable
 {
-    public MetadataResponse(MetadataResponseDto metadataResponse) : base(metadataResponse.id)
+    internal MetadataResponse(MetadataResponseDto metadataResponse) : base(metadataResponse.id)
     {
     }
 }
 
 public class Operations
 {
-    public Operations(OperationsResponseDto operationsResponse)
+    internal Operations(OperationsResponseDto operationsResponse)
     {
-        method = operationsResponse.Method;
-        href = operationsResponse.Href;
-        rel = operationsResponse.Rel;
-        contentType = operationsResponse.ContentType;
+        Method = operationsResponse.Method;
+        Href = operationsResponse.Href;
+        Rel = operationsResponse.Rel;
+        ContentType = operationsResponse.ContentType;
     }
 
-    public string method { get; set; }
-    public string href { get; set; }
-    public string rel { get; set; }
-    public string contentType { get; set; }
+    public string Method { get; set; }
+    public string Href { get; set; }
+    public string Rel { get; set; }
+    public string ContentType { get; set; }
 }

@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwedbankPay.Sdk.Infrastruct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwedbankPay.Sdk.Tests", "SwedbankPay.Sdk.Tests\SwedbankPay.Sdk.Tests.csproj", "{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{656B66C5-3800-416D-992B-AC11DFEE68B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656B66C5-3800-416D-992B-AC11DFEE68B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656B66C5-3800-416D-992B-AC11DFEE68B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656B66C5-3800-416D-992B-AC11DFEE68B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656B66C5-3800-416D-992B-AC11DFEE68B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

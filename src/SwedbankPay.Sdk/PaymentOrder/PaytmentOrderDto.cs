@@ -2,7 +2,7 @@ namespace SwedbankPay.Sdk.PaymentOrder;
 
 internal class PaymentOrderDto
 {
-    public PaymentOrderDto(PaymentOrderRequest paymentOrderRequest)
+    internal PaymentOrderDto(PaymentOrderRequest paymentOrderRequest)
     {
         Operation = paymentOrderRequest.Operation.Value;
         Currency = paymentOrderRequest.Currency.ToString();
@@ -17,6 +17,11 @@ internal class PaymentOrderDto
         Urls = new UrlsDto(paymentOrderRequest.Urls);
         OrderItems = paymentOrderRequest.OrderItems.Select(x => new OrderItemDto(x)).ToArray();
         PayeeInfo = new PayeeInfoDto(paymentOrderRequest.PayeeInfo);
+
+        if (paymentOrderRequest.Metadata != null)
+        {
+            Metadata = new MetadataDto(paymentOrderRequest.Metadata);
+        }
     }
 
     public string Operation { get; set; }
@@ -32,78 +37,5 @@ internal class PaymentOrderDto
     public UrlsDto Urls { get; set; }
     public OrderItemDto[] OrderItems { get; set; }
     public PayeeInfoDto PayeeInfo { get; set; }
-}
-
-internal class UrlsDto
-{
-    public UrlsDto(Urls urls)
-    {
-        HostUrls = urls.HostUrls.Select(x => x.ToString());
-        PaymentUrl = urls.PaymentUrl?.ToString();
-        CompleteUrl = urls.CompleteUrl.ToString();
-        CancelUrl = urls.CancelUrl.ToString();
-        CallbackUrl = urls.CallbackUrl.ToString();
-        LogoUrl = urls.LogoUrl?.ToString();
-    }
-
-    public IEnumerable<string> HostUrls { get; set; }
-    public string? PaymentUrl { get; set; }
-    public string CompleteUrl { get; set; }
-    public string CancelUrl { get; set; }
-    public string CallbackUrl { get; set; }
-    public string? LogoUrl { get; set; }
-}
-
-internal class OrderItemDto
-{
-    public OrderItemDto(OrderItem orderItem)
-    {
-        Reference = orderItem.Reference;
-        Name = orderItem.Name;
-        Type = orderItem.Type.Value;
-        Class = orderItem.Class;
-        ItemUrl = orderItem.ItemUrl;
-        ImageUrl = orderItem.ImageUrl;
-        Description = orderItem.Description;
-        DiscountDescription = orderItem.DiscountDescription;
-        Quantity = orderItem.Quantity;
-        QuantityUnit = orderItem.QuantityUnit;
-        UnitPrice = orderItem.UnitPrice.InLowestMonetaryUnit;
-        DiscountPrice = orderItem.DiscountPrice;
-        VatPercent = orderItem.VatPercent;
-        Amount = orderItem.Amount.InLowestMonetaryUnit;
-        VatAmount = orderItem.VatAmount.InLowestMonetaryUnit;
-    }
-
-    public string Reference { get; set; }
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public string Class { get; set; }
-    public string? ItemUrl { get; set; }
-    public string? ImageUrl { get; set; }
-    public string? Description { get; set; }
-    public string? DiscountDescription { get; set; }
-    public int Quantity { get; set; }
-    public string QuantityUnit { get; set; }
-    public long UnitPrice { get; set; }
-    public int? DiscountPrice { get; set; }
-    public int VatPercent { get; set; }
-    public long Amount { get; set; }
-    public long VatAmount { get; set; }
-}
-
-internal class PayeeInfoDto
-{
-    public PayeeInfoDto(PayeeInfo payeeInfo)
-    {
-        PayeeId = payeeInfo.PayeeId;
-        PayeeReference = payeeInfo.PayeeReference;
-        PayeeName = payeeInfo.PayeeName;
-        OrderReference = payeeInfo.OrderReference;
-    }
-
-    public string PayeeId { get; set; }
-    public string PayeeReference { get; set; }
-    public string? PayeeName { get; set; }
-    public string? OrderReference { get; set; }
+    public MetadataDto Metadata { get; set; }
 }

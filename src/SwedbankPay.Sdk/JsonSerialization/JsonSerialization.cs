@@ -1,4 +1,5 @@
 using System.Text.Json;
+using SwedbankPay.Sdk.JsonSerialization.Converters;
 
 namespace SwedbankPay.Sdk.JsonSerialization;
 
@@ -16,7 +17,7 @@ public static class JsonSerialization
             IgnoreReadOnlyProperties = false
         };
 
-        // Settings.Converters.Add(new CustomDateTimeConverter());
+        Settings.Converters.Add(new CustomDateTimeConverter());
         // Settings.Converters.Add(new CustomMetadataDtoConverter());
     }
 
