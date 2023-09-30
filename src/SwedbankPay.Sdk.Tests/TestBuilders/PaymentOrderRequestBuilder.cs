@@ -4,18 +4,18 @@ namespace SwedbankPay.Sdk.Tests.TestBuilders;
 
 public class PaymentOrderRequestBuilder
 {
-    private Amount _amount;
-    private Currency _currency;
-    private string _description;
+    private Amount? _amount;
+    private Currency? _currency;
+    private string? _description;
     private bool generateRecurrenceToken;
-    private Language _language;
-    private Operation _operation;
-    private List<OrderItem> orderItems;
-    private PayeeInfo _payeeInfo;
-    private Urls _urls;
-    private string _userAgent;
-    private Amount _vatAmount;
-    private string _implementation;
+    private Language? _language;
+    private Operation? _operation;
+    private List<OrderItem>? orderItems;
+    private PayeeInfo? _payeeInfo;
+    private Urls? _urls;
+    private string? _userAgent;
+    private Amount? _vatAmount;
+    private string? _implementation;
 
 
     public PaymentOrderRequest Build()

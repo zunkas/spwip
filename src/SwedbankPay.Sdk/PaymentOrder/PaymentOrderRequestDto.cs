@@ -1,6 +1,6 @@
 namespace SwedbankPay.Sdk.PaymentOrder;
 
-internal class PaymentOrderRequestDto
+internal record PaymentOrderRequestDto
 {
     internal PaymentOrderRequestDto(PaymentOrderRequest paymentOrderRequest)
     {
@@ -9,5 +9,3 @@ internal class PaymentOrderRequestDto
 
     public PaymentOrderDto PaymentOrder { get; set; }
 }
-
-

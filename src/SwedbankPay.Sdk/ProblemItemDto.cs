@@ -1,10 +1,10 @@
 namespace SwedbankPay.Sdk;
 
-internal class ProblemItemDto
+internal record ProblemItemDto
 {
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     internal IProblemItem Map()
     {

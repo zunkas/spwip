@@ -73,70 +73,70 @@ public class PaymentOrder
 
 public class PayerResponse : Identifiable
 {
-    internal PayerResponse(PayerResponseDto payer) : base(payer.id)
+    internal PayerResponse(PayerResponseDto payer) : base(payer.Id)
     {
     }
 }
 
 public class OrderItemsResponse : Identifiable
 {
-    internal OrderItemsResponse(OrderItemResponseDto orderItems) : base(orderItems.id)
+    internal OrderItemsResponse(OrderItemResponseDto orderItems) : base(orderItems.Id)
     {
     }
 }
 
 public class HistoryResponse : Identifiable
 {
-    internal HistoryResponse(HistoryResponseDto historyResponse) : base(historyResponse.id)
+    internal HistoryResponse(HistoryResponseDto historyResponse) : base(historyResponse.Id)
     {
     }
 }
 
 public class FailedResponse : Identifiable
 {
-    internal FailedResponse(FailedResponseDto failedResponse) : base(failedResponse.id)
+    internal FailedResponse(FailedResponseDto failedResponse) : base(failedResponse.Id)
     {
     }
 }
 
 public class AbortedResponse : Identifiable
 {
-    internal AbortedResponse(AbortedResponseDto abortedResponse) : base(abortedResponse.id)
+    internal AbortedResponse(AbortedResponseDto abortedResponse) : base(abortedResponse.Id)
     {
     }
 }
 
 public class PaidResponse : Identifiable
 {
-    internal PaidResponse(PaidResponseDto paidResponse) : base(paidResponse.id)
+    internal PaidResponse(PaidResponseDto paidResponse) : base(paidResponse.Id)
     {
     }
 }
 
 public class CancelledResponse : Identifiable
 {
-    internal CancelledResponse(CancelledResponseDto cancelledResponse) : base(cancelledResponse.id)
+    internal CancelledResponse(CancelledResponseDto cancelledResponse) : base(cancelledResponse.Id)
     {
     }
 }
 
 public class FinancialTransactionsResponse : Identifiable
 {
-    internal FinancialTransactionsResponse(FinancialTransactionsResponseDto financialTransactionsResponse) : base(financialTransactionsResponse.id)
+    internal FinancialTransactionsResponse(FinancialTransactionsResponseDto financialTransactionsResponse) : base(financialTransactionsResponse.Id)
     {
     }
 }
 
 public class FailedAttemptsResponse : Identifiable
 {
-    internal FailedAttemptsResponse(FailedAttemptsResponseDto failedAttemptsResponse) : base(failedAttemptsResponse.id)
+    internal FailedAttemptsResponse(FailedAttemptsResponseDto failedAttemptsResponse) : base(failedAttemptsResponse.Id)
     {
     }
 }
 
 public class MetadataResponse : Identifiable
 {
-    internal MetadataResponse(MetadataResponseDto metadataResponse) : base(metadataResponse.id)
+    internal MetadataResponse(MetadataResponseDto metadataResponse) : base(metadataResponse.Id)
     {
     }
 }

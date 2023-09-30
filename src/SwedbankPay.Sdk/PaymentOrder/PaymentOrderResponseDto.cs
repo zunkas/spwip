@@ -1,6 +1,5 @@
 namespace SwedbankPay.Sdk.PaymentOrder;
 
-
 internal class PaymentOrderResponseDto
 {
     public PaymentOrderResponseItemDto PaymentOrder { get; set; }
@@ -36,54 +35,74 @@ internal class PaymentOrderResponseItemDto
     public MetadataResponseDto Metadata { get; set; }
 }
 
-public class PayerResponseDto
+internal class PayerResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal PayerResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class OrderItemResponseDto
+internal class OrderItemResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal OrderItemResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class HistoryResponseDto
+internal class HistoryResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal HistoryResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class FailedResponseDto
+internal class FailedResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal FailedResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class AbortedResponseDto
+internal class AbortedResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal AbortedResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class PaidResponseDto
+internal class PaidResponseDto: IdentifiableDto
 {
-    public string id { get; set; }
+    internal PaidResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class CancelledResponseDto
+internal class CancelledResponseDto: IdentifiableDto
 {
-    public string id { get; set; }
+    internal CancelledResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class FinancialTransactionsResponseDto
+internal class FinancialTransactionsResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal FinancialTransactionsResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class FailedAttemptsResponseDto
+internal class FailedAttemptsResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal FailedAttemptsResponseDto(string id) : base(id)
+    {
+    }
 }
 
-public class MetadataResponseDto
+internal class MetadataResponseDto : IdentifiableDto
 {
-    public string id { get; set; }
+    internal MetadataResponseDto(string id) : base(id)
+    {
+    }
 }
 
 public class OperationsResponseDto
@@ -93,4 +112,3 @@ public class OperationsResponseDto
     public string Rel { get; set; }
     public string ContentType { get; set; }
 }
-

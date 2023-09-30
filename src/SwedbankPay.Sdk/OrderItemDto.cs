@@ -1,6 +1,6 @@
 namespace SwedbankPay.Sdk;
 
-internal class OrderItemDto
+internal record OrderItemDto
 {
     public OrderItemDto(OrderItem orderItem)
     {

@@ -7,7 +7,7 @@ public class PaymentOrdersResource : ResourceBase, IPaymentOrdersResource
     public PaymentOrdersResource(HttpClient httpClient) : base(httpClient)
     {
     }
-    
+
     /// <summary>
     ///     Create a payment order
     /// </summary>
@@ -27,8 +27,6 @@ public class PaymentOrdersResource : ResourceBase, IPaymentOrdersResource
     }
 }
 
-
-
 public interface IPaymentOrdersResource
 {
     /// <summary>
@@ -40,7 +38,8 @@ public interface IPaymentOrdersResource
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="System.Net.Http.HttpRequestException"></exception>
     /// <returns></returns>
-    Task<PaymentOrderResponse> Create(PaymentOrderRequest paymentOrderRequest, PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None);
+    Task<PaymentOrderResponse> Create(PaymentOrderRequest paymentOrderRequest,
+        PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None);
 
 
     /// <summary>

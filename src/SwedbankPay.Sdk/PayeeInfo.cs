@@ -1,15 +1,7 @@
 namespace SwedbankPay.Sdk;
 
-public class PayeeInfo
+public record PayeeInfo(string PayeeId, string PayeeReference)
 {
-    public PayeeInfo(string payeeId, string payeeReference)
-    {
-        PayeeId = payeeId;
-        PayeeReference = payeeReference;
-    }
-
-    public string PayeeId { get; }
-    public string PayeeReference { get; }
     public string? PayeeName { get; set; }
     public string? OrderReference { get; set; }
 }

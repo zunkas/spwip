@@ -1,6 +1,6 @@
 namespace SwedbankPay.Sdk;
 
-internal class ProblemItem : IProblemItem
+internal record ProblemItem : IProblemItem
 {
     public ProblemItem(ProblemItemDto dto)
     {
@@ -8,7 +8,7 @@ internal class ProblemItem : IProblemItem
         Name = dto.Name;
     }
 
-    public string Description { get; }
+    public string? Description { get; }
 
-    public string Name { get; }
+    public string? Name { get; }
 }

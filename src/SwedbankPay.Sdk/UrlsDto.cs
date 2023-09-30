@@ -1,6 +1,6 @@
 namespace SwedbankPay.Sdk;
 
-internal class UrlsDto
+internal record UrlsDto
 {
     public UrlsDto(Urls urls)
     {
