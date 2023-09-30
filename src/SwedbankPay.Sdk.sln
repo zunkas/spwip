@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwedbankPay.Sdk", "SwedbankPay.Sdk\SwedbankPay.Sdk.csproj", "{A0EEAB77-B890-4284-8C83-544394B3DB91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwedbankPay.Sdk.Infrastructure", "SwedbankPay.Sdk.Infrastructure\SwedbankPay.Sdk.Infrastructure.csproj", "{79D463ED-1F0C-4D39-BD96-796C4179BFF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwedbankPay.Sdk.Tests", "SwedbankPay.Sdk.Tests\SwedbankPay.Sdk.Tests.csproj", "{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0EEAB77-B890-4284-8C83-544394B3DB91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0EEAB77-B890-4284-8C83-544394B3DB91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0EEAB77-B890-4284-8C83-544394B3DB91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0EEAB77-B890-4284-8C83-544394B3DB91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D463ED-1F0C-4D39-BD96-796C4179BFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D463ED-1F0C-4D39-BD96-796C4179BFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D463ED-1F0C-4D39-BD96-796C4179BFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D463ED-1F0C-4D39-BD96-796C4179BFF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F0D17E-E977-4649-86DD-3F6FD84DBCA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
