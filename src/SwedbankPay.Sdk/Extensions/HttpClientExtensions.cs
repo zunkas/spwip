@@ -44,11 +44,11 @@ public static class HttpClientExtensions
 
         using var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
 
-        string? httpResponseContent = string.Empty;
+        string httpResponseContent = string.Empty;
         try
         {
             httpResponseContent = await httpResponseMessage.Content.ReadAsStringAsync();
-            if (!httpResponseMessage.IsSuccessStatusCode)
+                if (!httpResponseMessage.IsSuccessStatusCode)
             {
                 string? errorMessage;
                 if (string.IsNullOrEmpty(httpResponseContent))
@@ -66,7 +66,7 @@ public static class HttpClientExtensions
 
                 var problemResponseDto = JsonSerializer.Deserialize<ProblemDto>(httpResponseContent,
                     JsonSerialization.JsonSerialization.Settings);
-                var problemResponse = problemResponseDto.Map();
+                var problemResponse = problemResponseDto?.Map();
                 errorMessage = BuildErrorMessage(httpResponseContent);
 
                 throw new HttpResponseException(

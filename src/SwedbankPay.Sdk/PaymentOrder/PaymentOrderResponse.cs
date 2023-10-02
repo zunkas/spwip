@@ -1,19 +1,70 @@
 namespace SwedbankPay.Sdk.PaymentOrder;
 
-public class PaymentOrderResponse
+public interface IPaymentOrderResponse
+{
+    /// <summary>
+    /// Currently available operations of this payment order.
+    /// </summary>
+    IPaymentOrderOperations Operations { get; }
+
+    /// <summary>
+    /// The current payment order.
+    /// </summary>
+    IPaymentOrder PaymentOrder { get; }
+}
+
+public class PaymentOrderResponse: IPaymentOrderResponse
 {
     internal PaymentOrderResponse(PaymentOrderResponseDto paymentOrderResponseDto, HttpClient httpClient)
     {
         PaymentOrder = new PaymentOrder(paymentOrderResponseDto.PaymentOrder);
-        Operations = paymentOrderResponseDto.Operations.Select(x => new Operations(x)).ToArray();
+        
+        var httpOperations = new OperationList();
+        foreach (var item in paymentOrderResponseDto.Operations)
+        {
+            var rel = new LinkRelation(item.Rel);
+            var href = new Uri(item.Href, UriKind.RelativeOrAbsolute);
+            httpOperations.Add(new HttpOperation(href, rel, item.Method, item.ContentType));
+        }
+
+        Operations = new PaymentOrderOperations(httpOperations, httpClient);
     }
 
-    public PaymentOrder PaymentOrder { get; }
-    public Operations[] Operations { get; }
+    public IPaymentOrder PaymentOrder { get; }
+    public IPaymentOrderOperations Operations { get; }
 }
 
 
-public class PaymentOrder
+public interface IPaymentOrder
+{
+    string Id { get; }
+    DateTime Created { get; }
+    DateTime Updated { get; }
+    string Operation { get; }
+    string Status { get; }
+    string Currency { get; }
+    Amount VatAmount { get; }
+    Amount Amount { get; }
+    string Description { get; }
+    string InitiatingSystemUserAgent { get; }
+    Language Language { get; }
+    string[] AvailableInstruments { get; }
+    string Implementation { get; }
+    bool InstrumentMode { get; }
+    bool GuestMode { get; }
+    PayerResponse Payer { get; }
+    OrderItemsResponse OrderItems { get; }
+    HistoryResponse History { get; }
+    FailedResponse Failed { get; }
+    AbortedResponse Aborted { get; }
+    PaidResponse Paid { get; }
+    CancelledResponse Cancelled { get; }
+    FinancialTransactionsResponse FinancialTransactions { get; }
+    FailedAttemptsResponse FailedAttempts { get; }
+    MetadataResponse Metadata { get; }
+}
+
+public class PaymentOrder : IPaymentOrder
 {
     internal PaymentOrder(PaymentOrderResponseItemDto paymentOrderResponseItemDto)
     {
@@ -139,20 +190,4 @@ public class MetadataResponse : Identifiable
     internal MetadataResponse(MetadataResponseDto metadataResponse) : base(metadataResponse.Id)
     {
     }
-}
-
-public class Operations
-{
-    internal Operations(OperationsResponseDto operationsResponse)
-    {
-        Method = operationsResponse.Method;
-        Href = operationsResponse.Href;
-        Rel = operationsResponse.Rel;
-        ContentType = operationsResponse.ContentType;
-    }
-
-    public string Method { get; set; }
-    public string Href { get; set; }
-    public string Rel { get; set; }
-    public string ContentType { get; set; }
 }

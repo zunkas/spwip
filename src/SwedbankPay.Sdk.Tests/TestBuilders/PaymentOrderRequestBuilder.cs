@@ -92,7 +92,8 @@ public class PaymentOrderRequestBuilder
         _description = "Test Description";
         _userAgent = "useragent";
         _language = new Language("sv-SE");
-        _implementation = "Checkoutv3";
+        // _implementation = "Checkoutv3";
+        _implementation = "PaymentsOnly";
         _urls = new Urls(new List<Uri> { new Uri("https://example.com") },new Uri("https://example.com/payment-completed"),
             new Uri("https://example.com/payment-canceled"), new Uri("https://example.com/payment-callback"));
        

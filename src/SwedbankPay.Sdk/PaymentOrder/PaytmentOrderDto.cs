@@ -37,5 +37,5 @@ internal class PaymentOrderDto
     public UrlsDto Urls { get; set; }
     public OrderItemDto[] OrderItems { get; set; }
     public PayeeInfoDto PayeeInfo { get; set; }
-    public MetadataDto Metadata { get; set; }
+    public MetadataDto? Metadata { get; set; }
 }

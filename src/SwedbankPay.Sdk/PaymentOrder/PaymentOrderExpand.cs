@@ -13,47 +13,67 @@ public enum PaymentOrderExpand
     None = 0,
 
     /// <summary>
-    /// Expand the Urls sub-reasource.
+    /// Expand the Order items sub-resource.
     /// </summary>
-    Urls = 1,
+    OrderItems = 1,
 
     /// <summary>
-    /// Expand the PayeeInfo sub-reasource.
+    /// Expand the Urls sub-resource.
     /// </summary>
-    PayeeInfo = 2,
+    Urls = 2,
 
     /// <summary>
-    /// Expand the Settings sub-reasource.
+    /// Expand the Payee info sub-resource.
     /// </summary>
-    Settings = 4,
+    PayeeInfo = 4,
 
     /// <summary>
-    /// Expand the Payers sub-reasource.
+    /// Expand the Payer sub-resource.
     /// </summary>
-    Payers = 8,
+    Payer = 8,
 
     /// <summary>
-    /// Expand the OrderItems sub-reasource.
+    /// Expand the History sub-resource.
     /// </summary>
-    OrderItems = 16,
+    History = 16,
 
     /// <summary>
-    /// Expand the Metadata sub-reasource.
+    /// Expand the Failed sub-resource.
     /// </summary>
-    Metadata = 32,
+    Failed = 32,
 
     /// <summary>
-    /// Expand the Payments sub-reasource.
+    /// Expand the Aborted sub-resource.
     /// </summary>
-    Payments = 64,
+    Aborted = 64,
 
     /// <summary>
-    /// Expand the CurrentPayment sub-reasource.
+    /// Expand the Paid sub-resource.
     /// </summary>
-    CurrentPayment = 128,
-
+    Paid = 128,
+    
     /// <summary>
-    /// Expand All sub-reasources.
+    /// Expand the Cancelled sub-resource.
     /// </summary>
-    All = 255
+    Cancelled = 256, 
+    
+    /// <summary>
+    /// Expand the Financial transactions sub-resource.
+    /// </summary>
+    FinancialTransactions = 512,
+    
+    /// <summary>
+    /// Expand the Failed attempts sub-resource.
+    /// </summary>
+    FailedAttempts = 1024,
+    
+    /// <summary>
+    /// Expand the Meta data sub-resource.
+    /// </summary>
+    MetaData = 2048,
+    
+    /// <summary>
+    /// Expand All sub-resources.
+    /// </summary>
+    All = 4095
 }

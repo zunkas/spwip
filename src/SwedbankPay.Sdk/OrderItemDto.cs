@@ -2,7 +2,7 @@ namespace SwedbankPay.Sdk;
 
 internal record OrderItemDto
 {
-    public OrderItemDto(OrderItem orderItem)
+    internal OrderItemDto(OrderItem orderItem)
     {
         Reference = orderItem.Reference;
         Name = orderItem.Name;

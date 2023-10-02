@@ -3,7 +3,7 @@ namespace SwedbankPay.Sdk.PaymentOrder;
 internal class PaymentOrderResponseDto
 {
     public PaymentOrderResponseItemDto PaymentOrder { get; set; }
-    public OperationsResponseDto[] Operations { get; set; }
+    public IList<OperationResponseDto> Operations { get; set; }
 }
 
 internal class PaymentOrderResponseItemDto
@@ -37,78 +37,63 @@ internal class PaymentOrderResponseItemDto
 
 internal class PayerResponseDto : IdentifiableDto
 {
-    internal PayerResponseDto(string id) : base(id)
+    public PayerResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class OrderItemResponseDto : IdentifiableDto
 {
-    internal OrderItemResponseDto(string id) : base(id)
+    public OrderItemResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class HistoryResponseDto : IdentifiableDto
 {
-    internal HistoryResponseDto(string id) : base(id)
+    public HistoryResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class FailedResponseDto : IdentifiableDto
 {
-    internal FailedResponseDto(string id) : base(id)
+    public FailedResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class AbortedResponseDto : IdentifiableDto
 {
-    internal AbortedResponseDto(string id) : base(id)
+    public AbortedResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class PaidResponseDto: IdentifiableDto
 {
-    internal PaidResponseDto(string id) : base(id)
+    public PaidResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class CancelledResponseDto: IdentifiableDto
 {
-    internal CancelledResponseDto(string id) : base(id)
+    public CancelledResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class FinancialTransactionsResponseDto : IdentifiableDto
 {
-    internal FinancialTransactionsResponseDto(string id) : base(id)
+    public FinancialTransactionsResponseDto(string id) : base(id)
     {
     }
 }
 
 internal class FailedAttemptsResponseDto : IdentifiableDto
 {
-    internal FailedAttemptsResponseDto(string id) : base(id)
+    public FailedAttemptsResponseDto(string id) : base(id)
     {
     }
-}
-
-internal class MetadataResponseDto : IdentifiableDto
-{
-    internal MetadataResponseDto(string id) : base(id)
-    {
-    }
-}
-
-public class OperationsResponseDto
-{
-    public string Method { get; set; }
-    public string Href { get; set; }
-    public string Rel { get; set; }
-    public string ContentType { get; set; }
 }

@@ -9,10 +9,13 @@ public class PaymentOrdersResource : ResourceBase, IPaymentOrdersResource
     }
 
     /// <summary>
-    ///     Create a payment order
+    ///     Creates a payment order
     /// </summary>
     /// <param name="paymentOrderRequest"></param>
     /// <param name="paymentOrderExpand"></param>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="System.Net.Http.HttpRequestException"></exception>
     /// <returns></returns>
     public async Task<PaymentOrderResponse> Create(PaymentOrderRequest paymentOrderRequest,
         PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None)
@@ -25,7 +28,32 @@ public class PaymentOrdersResource : ResourceBase, IPaymentOrdersResource
 
         return new PaymentOrderResponse(paymentOrderResponseDto, HttpClient);
     }
+    
+    /// <summary>
+    ///     Get payment order by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="paymentOrderExpand"></param>
+    /// <returns></returns>
+    /// <exception cref="ArgumentNullException"></exception>
+    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="HttpRequestException"></exception>
+    /// <exception cref="System.Net.Http.HttpRequestException"></exception>
+    public async Task<IPaymentOrderResponse> Get(Uri id, PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None)
+    {
+        if (id == null)
+        {
+            throw new ArgumentNullException(nameof(id), $"{id} cannot be null");
+        }
+
+        Uri url = id.GetUrlWithQueryString(paymentOrderExpand);
+
+        var paymentOrderResponseContainer = await HttpClient.GetAsJsonAsync<PaymentOrderResponseDto>(url);
+
+        return new PaymentOrderResponse(paymentOrderResponseContainer, HttpClient);
+    }
 }
+
 
 public interface IPaymentOrdersResource
 {
@@ -51,5 +79,5 @@ public interface IPaymentOrdersResource
     /// <exception cref="InvalidOperationException"></exception>
     /// <exception cref="System.Net.Http.HttpRequestException"></exception>
     /// <returns></returns>
-    // Task<IPaymentOrderResponse> Get(Uri id, PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None);
+    Task<IPaymentOrderResponse> Get(Uri id, PaymentOrderExpand paymentOrderExpand = PaymentOrderExpand.None);
 }
