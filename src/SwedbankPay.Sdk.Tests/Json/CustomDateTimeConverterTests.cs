@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 
-namespace SwedbankPay.Sdk.Tests;
+namespace SwedbankPay.Sdk.Tests.Json;
 
 public class CustomDateTimeConverterTests
 {
