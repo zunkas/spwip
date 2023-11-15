@@ -53,9 +53,10 @@ public interface IPaymentOrder
     string? Implementation { get; }
     bool InstrumentMode { get; }
     bool GuestMode { get; }
-    PayerResponse? Payer { get; }
     OrderItemsResponse? OrderItems { get; } 
     Urls? Urls { get; }
+    Identifiable? PayeeInfo { get; }
+    PayerResponse? Payer { get; }
     HistoryResponse? History { get; }
     FailedResponse? Failed { get; }
     AbortedResponse? Aborted { get; }
@@ -63,6 +64,7 @@ public interface IPaymentOrder
     CancelledResponse? Cancelled { get; }
     FinancialTransactionsResponse? FinancialTransactions { get; }
     FailedAttemptsResponse? FailedAttempts { get; }
+    PostPurchaseFailedAttemptsResponse? PostPurchaseFailedAttempts { get; }
     Metadata? Metadata { get; }
 }
 
@@ -80,11 +82,13 @@ public class PaymentOrder : Identifiable, IPaymentOrder
     public Language Language { get; }
     public string[]? AvailableInstruments { get; }
     public string? Implementation { get; }
+    public string? Integration { get; }
     public bool InstrumentMode { get; }
     public bool GuestMode { get; }
-    public PayerResponse? Payer { get; }
     public OrderItemsResponse? OrderItems { get; }
     public Urls? Urls { get; }
+    public Identifiable? PayeeInfo { get; }
+    public PayerResponse? Payer { get; }
     public HistoryResponse? History { get; }
     public FailedResponse? Failed { get; }
     public AbortedResponse? Aborted { get; }
@@ -92,6 +96,7 @@ public class PaymentOrder : Identifiable, IPaymentOrder
     public CancelledResponse? Cancelled { get; }
     public FinancialTransactionsResponse? FinancialTransactions { get; }
     public FailedAttemptsResponse? FailedAttempts { get; }
+    public PostPurchaseFailedAttemptsResponse? PostPurchaseFailedAttempts { get; }
     public Metadata? Metadata { get; }
 
     internal PaymentOrder(PaymentOrderResponseItemDto paymentOrderResponseItemDto) : base(paymentOrderResponseItemDto.Id)
@@ -108,11 +113,13 @@ public class PaymentOrder : Identifiable, IPaymentOrder
         Language = new Language(paymentOrderResponseItemDto.Language);
         AvailableInstruments = paymentOrderResponseItemDto.AvailableInstruments;
         Implementation = paymentOrderResponseItemDto.Implementation;
+        Integration = paymentOrderResponseItemDto.Integration;
         InstrumentMode = paymentOrderResponseItemDto.InstrumentMode;
         GuestMode = paymentOrderResponseItemDto.GuestMode;
-        Payer = paymentOrderResponseItemDto.Payer?.Map();
         OrderItems = paymentOrderResponseItemDto.OrderItems?.Map();
         Urls = paymentOrderResponseItemDto.Urls?.Map();
+        PayeeInfo = paymentOrderResponseItemDto.PayeeInfo != null ? new Identifiable(paymentOrderResponseItemDto.PayeeInfo.Id) : null;
+        Payer = paymentOrderResponseItemDto.Payer?.Map();
         History = paymentOrderResponseItemDto.History?.Map();
         Failed = paymentOrderResponseItemDto.Failed?.Map();
         Aborted = paymentOrderResponseItemDto.Aborted?.Map();
@@ -120,6 +127,7 @@ public class PaymentOrder : Identifiable, IPaymentOrder
         Cancelled = paymentOrderResponseItemDto.Cancelled?.Map();
         FinancialTransactions = paymentOrderResponseItemDto.FinancialTransactions?.Map();
         FailedAttempts = paymentOrderResponseItemDto.FailedAttempts?.Map();
+        PostPurchaseFailedAttempts = paymentOrderResponseItemDto.PostPurchaseFailedAttempts?.Map();
         Metadata = paymentOrderResponseItemDto.Metadata?.Map();
     }
 }
@@ -232,11 +240,18 @@ public class FailedAttemptsResponse : Identifiable
     }
 }
 
+public class PostPurchaseFailedAttemptsResponse : Identifiable
+{
+    internal PostPurchaseFailedAttemptsResponse(PostPurchaseFailedAttemptsResponseDto dto) : base(dto.Id)
+    {
+    }
+}
+
 public class FinancialTransactionListItem : Identifiable
 {
     public DateTime Created { get; set; }
     public DateTime Updated { get; set; }
-    public string? Type { get; set; }
+    public FinancialTransactionType? Type { get; set; }
     public long Number { get; set; }
     public Amount Amount { get; set; }
     public Amount VatAmount { get; set; }
@@ -362,7 +377,7 @@ public class PaidResponse : Identifiable
     public string? Instrument { get; }
     public long Number { get; }
     public string? PayeeReference { get; }
-    public string? TransactionType { get; }
+    public TransactionType? TransactionType { get; }
     public Amount Amount { get; }
     public Amount SubmittedAmount { get; }
     public Amount FeeAmount { get; }

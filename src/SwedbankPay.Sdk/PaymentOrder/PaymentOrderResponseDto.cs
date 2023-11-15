@@ -21,11 +21,14 @@ internal record PaymentOrderResponseItemDto
     public string Language { get; set; } = null!;
     public string[]? AvailableInstruments { get; set; }
     public string? Implementation { get; set; }
+    public string? Integration { get; set; }
     public bool InstrumentMode { get; set; }
     public bool GuestMode { get; set; }
     public PayerResponseDto? Payer { get; set; }
     public OrderItemResponseDto? OrderItems { get; set; }
     public UrlsDto? Urls { get; set; }
+    public IdentifiableDto? PayeeInfo { get; set; }
+    public IdentifiableDto? Payers { get; set; }
     public HistoryResponseDto? History { get; set; }
     public FailedResponseDto? Failed { get; set; }
     public AbortedResponseDto? Aborted { get; set; }
@@ -33,6 +36,7 @@ internal record PaymentOrderResponseItemDto
     public CancelledResponseDto? Cancelled { get; set; }
     public FinancialTransactionsResponseDto? FinancialTransactions { get; set; }
     public FailedAttemptsResponseDto? FailedAttempts { get; set; }
+    public PostPurchaseFailedAttemptsResponseDto? PostPurchaseFailedAttempts { get; set; }
     public MetadataDto? Metadata { get; set; }
 }
 
@@ -145,6 +149,18 @@ internal record FailedAttemptsResponseDto : IdentifiableDto
     public FailedAttemptsResponse Map()
     {
         return new FailedAttemptsResponse(this);
+    }
+}
+
+internal record PostPurchaseFailedAttemptsResponseDto : IdentifiableDto
+{
+    public PostPurchaseFailedAttemptsResponseDto(string id) : base(id)
+    {
+    }
+
+    public PostPurchaseFailedAttemptsResponse Map()
+    {
+        return new PostPurchaseFailedAttemptsResponse(this);
     }
 }
 
