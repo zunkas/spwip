@@ -74,7 +74,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ./src/Samples/Sample.AspNetCore.UiTests
-          start: dotnet run --project ./src/Samples/Sample.AspNetCore/Sample.AspNetCore.csproj
+          start: dotnet run --project ../Sample.AspNetCore/Sample.AspNetCore.csproj
           wait-on: 'https://localhost:5001'
           browser: chrome
         
