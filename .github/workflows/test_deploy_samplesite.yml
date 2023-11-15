@@ -73,11 +73,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          working-directory: Sample.AspNetCore
-          start: dotnet Sample.AspNetCore.dll --urls https://localhost:5001
+          working-directory: ./src/Samples/Sample.AspNetCore.UiTests
+          start: dotnet run --project ./src/Samples/Sample.AspNetCore/Sample.AspNetCore.csproj
           wait-on: 'https://localhost:5001'
           browser: chrome
-          project: ./src/Samples/Sample.AspNetCore.UiTests
         
       # - uses: actions/setup-node@v4
       #   with:
