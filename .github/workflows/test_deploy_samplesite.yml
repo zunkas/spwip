@@ -58,7 +58,8 @@ jobs:
       #     SwedbankPay:PayeeId: ${{ secrets.MERCHANT_PAYEEID }}
 
       - name: Run SDK Sample project
-        run: dotnet Sample.AspNetCore/Sample.AspNetCore.dll --urls https://localhost:5001
+        run: dotnet Sample.AspNetCore.dll --urls https://localhost:5001
+        working-directory: Sample.AspNetCore
         # env:
         #   SwedbankPay:Token: ${{ secrets.MERCHANT_TOKEN }}
         #   SwedbankPay:TokenMobilePay: ${{ secrets.MERCHANT_TOKEN_MOBILE_PAY }}
