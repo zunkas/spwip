@@ -76,7 +76,7 @@ jobs:
           start: dotnet Sample.AspNetCore.dll --urls https://localhost:5001
           wait-on: 'https://localhost:5001'
           browser: chrome
-          working-directory: ./src/Samples/Sample.AsPnetCore.UiTests
+          working-directory: ./src/Samples/Sample.AspNetCore.UiTests
       # - uses: actions/setup-node@v4
       #   with:
       #     node-version;: 18.14.0
