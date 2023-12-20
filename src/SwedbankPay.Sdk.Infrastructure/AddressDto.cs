@@ -1,10 +1,8 @@
-using SwedbankPay.Sdk.PaymentOrder.Address;
-
-namespace SwedbankPay.Sdk.Infrastructure.PaymentOrder.Address;
+namespace SwedbankPay.Sdk.Infrastructure;
 
 internal record AddressDto
 {
-    public AddressDto(Sdk.PaymentOrder.Address.Address? address)
+    public AddressDto(Sdk.PaymentOrder.Address? address)
     {
         Name = address?.Name;
         FirstName = address?.FirstName;

@@ -1,6 +1,4 @@
-using SwedbankPay.Sdk.PaymentOrder.Address;
-
-namespace SwedbankPay.Sdk;
+namespace SwedbankPay.Sdk.PaymentOrder.RiskIndicator;
 
 /// <summary>
 /// This object consist of information that helps verifying the payer. Providing these fields decreases the likelihood of

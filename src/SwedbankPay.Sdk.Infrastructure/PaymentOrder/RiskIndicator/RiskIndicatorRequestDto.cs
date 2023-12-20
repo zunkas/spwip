@@ -1,12 +1,10 @@
-using SwedbankPay.Sdk.Infrastructure.PaymentOrder.Address;
+namespace SwedbankPay.Sdk.Infrastructure.PaymentOrder.RiskIndicator;
 
-namespace SwedbankPay.Sdk.Infrastructure;
-
-internal record RiskIndicatorDto
+internal record RiskIndicatorRequestDto
 {
     private const string ThreeDSecureDateTimeString = "yyyyMMdd";
 
-    public RiskIndicatorDto(RiskIndicator riskIndicator)
+    public RiskIndicatorRequestDto(Sdk.PaymentOrder.RiskIndicator.RiskIndicator riskIndicator)
     {
         DeliveryEmailAddress = riskIndicator.DeliveryEmailAddress?.ToString();
         DeliveryTimeFrameIndicator = riskIndicator.DeliveryTimeFrameIndicator?.Value;

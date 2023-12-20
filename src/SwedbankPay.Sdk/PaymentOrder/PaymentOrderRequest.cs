@@ -20,7 +20,7 @@ public record PaymentOrderRequest(Operation Operation, Currency Currency, Amount
     public Urls.Urls Urls { get; } = Urls;
     public Sdk.PayeeInfo PayeeInfo { get; } = PayeeInfo;
     
-    public RiskIndicator? RiskIndicator { get; set; }
+    public RiskIndicator.RiskIndicator? RiskIndicator { get; set; }
     
     public Payer.Payer? Payer { get; set; }
 }

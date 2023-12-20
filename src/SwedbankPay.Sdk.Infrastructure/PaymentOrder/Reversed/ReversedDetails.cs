@@ -1,5 +1,3 @@
-using System.Globalization;
-
 using SwedbankPay.Sdk.PaymentOrder.Reversed;
 
 namespace SwedbankPay.Sdk.Infrastructure.PaymentOrder.Reversed;
@@ -21,7 +19,7 @@ internal record ReversedDetails : IReversedDetails
     public DateTime? AcquirerTransactionTime { get; }
     public string? TransactionInitiator { get; }
     public string? Bin { get; }
-    public string? Msisdn { get; }
+    public Msisdn? Msisdn { get; }
     
     public ReversedDetails(ReversedDetailsDto dto)
     {
@@ -40,6 +38,10 @@ internal record ReversedDetails : IReversedDetails
         AcquirerTransactionTime = dto.AcquirerTransactionTime;
         TransactionInitiator = dto.TransactionInitiator;
         Bin = dto.Bin;
-        Msisdn = dto.Msisdn;
+       
+        if (!string.IsNullOrWhiteSpace(dto.Msisdn))
+        {
+            Msisdn = new Msisdn(dto.Msisdn!);
+        }
     }
 }

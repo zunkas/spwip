@@ -1,4 +1,4 @@
-namespace SwedbankPay.Sdk.PaymentOrder.Address
+namespace SwedbankPay.Sdk.PaymentOrder
 {
     public record Address : IAddress
     {

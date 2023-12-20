@@ -21,7 +21,7 @@ internal record CancelledDetails : ICancelledDetails
     public DateTime? AcquirerTransactionTime { get; }
     public string? TransactionInitiator { get; }
     public string? Bin { get; }
-    public string? Msisdn { get; }
+    public Msisdn? Msisdn { get; }
 
     internal CancelledDetails(CancelledDetailsDto dto)
     {
@@ -40,6 +40,10 @@ internal record CancelledDetails : ICancelledDetails
         AcquirerTransactionTime = dto.AcquirerTransactionTime;
         TransactionInitiator = dto.TransactionInitiator;
         Bin = dto.Bin;
-        Msisdn = dto.Msisdn;
+
+        if (!string.IsNullOrWhiteSpace(dto.Msisdn))
+        {
+            Msisdn = new Msisdn(dto.Msisdn!);
+        }
     }
 }

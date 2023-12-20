@@ -1,4 +1,4 @@
-using SwedbankPay.Sdk.PaymentOrder.Address;
+using static SwedbankPay.Sdk.PaymentOrder.Address;
 
 namespace SwedbankPay.Sdk.PaymentOrder.Payer;
 
@@ -48,12 +48,12 @@ public record Payer
     /// <summary>
     /// Payers billing address for this payment order.
     /// </summary>
-    public Address.Address? BillingAddress { get; set; }
+    public Address? BillingAddress { get; set; }
 
     /// <summary>
     /// Payers shipping address for this payment order.
     /// </summary>
-    public Address.Address? ShippingAddress { get; set; }
+    public Address? ShippingAddress { get; set; }
     
     /// <summary>
     /// Account information about the payer if such is known by the merchant system.

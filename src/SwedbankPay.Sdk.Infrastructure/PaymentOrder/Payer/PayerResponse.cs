@@ -16,8 +16,16 @@ internal record PayerResponse : Identifiable, IPayerResponse
         Device = dto.Device?.Map();
         Reference = dto.Reference;
         Name = dto.Name;
-        Email = new EmailAddress(dto.Email ?? "");
-        Msisdn = new Msisdn(dto.Msisdn ?? "");
         HashedFields = dto.HashedFields;
+
+        if (!string.IsNullOrWhiteSpace(dto.Email))
+        {
+            Email = new EmailAddress(dto.Email!);
+        }
+        
+        if (!string.IsNullOrWhiteSpace(dto.Msisdn))
+        {
+            Msisdn = new Msisdn(dto.Msisdn!);
+        }
     }
 }

@@ -1,10 +1,10 @@
-using SwedbankPay.Sdk.Infrastructure.PaymentOrder.Address;
+using SwedbankPay.Sdk.PaymentOrder.Payer;
 
 namespace SwedbankPay.Sdk.Infrastructure.PaymentOrder.Payer;
 
-internal record PayerDto
+internal record PayerRequestDto
 {
-    public PayerDto(Sdk.PaymentOrder.Payer.Payer payer)
+    public PayerRequestDto(Sdk.PaymentOrder.Payer.Payer payer)
     {
         FirstName = payer.FirstName;
         LastName = payer.LastName;
@@ -15,6 +15,7 @@ internal record PayerDto
         HomePhoneNumber = payer.HomePhoneNumber?.ToString();
         BillingAddress = new AddressDto(payer.BillingAddress);
         ShippingAddress = new AddressDto(payer.ShippingAddress);
+        AccountInfo = new AccountInfoDto(payer.AccountInfo);
     }
 
     public string? FirstName { get; }
@@ -34,4 +35,6 @@ internal record PayerDto
     public AddressDto? BillingAddress { get; }
     
     public AddressDto? ShippingAddress { get; }
+    
+    public AccountInfoDto? AccountInfo { get; }
 }
