@@ -148,7 +148,7 @@ public class CheckOutController : Controller
                 LastName = "Nyhuus",
                 PayerReference = "AB1234",
                 Email = new EmailAddress("olivia.nyhuus@payex.com"),
-                Msisdn = new Msisdn("+46701234567"),
+                Msisdn = new Msisdn("+46739000001"),
                 WorkPhoneNumber = new Msisdn("+4787654321"),
                 HomePhoneNumber = new Msisdn("+4776543210"),
                 ShippingAddress = new Address

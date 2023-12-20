@@ -47,4 +47,8 @@ public class Msisdn
     {
         return _value;
     }
+    /// <summary>
+    /// Gets the msisdn.
+    /// </summary>
+    public string Value => _value;
 }
