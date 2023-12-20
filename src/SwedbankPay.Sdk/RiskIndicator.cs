@@ -63,5 +63,5 @@ public record RiskIndicator
     /// <summary>
     ///     If shipIndicator set to 4, then prefill
     /// </summary>
-    public PickUpAddress? PickUpAddress { get; set; }
+    public Address? PickUpAddress { get; set; }
 }

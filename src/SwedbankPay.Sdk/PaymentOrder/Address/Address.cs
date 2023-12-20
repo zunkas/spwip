@@ -1,14 +1,34 @@
 namespace SwedbankPay.Sdk.PaymentOrder.Address
 {
-    public record BillingAddress : IAddress
+    public record Address : IAddress
     {
+        /// <summary>
+        /// Full name of the payer.
+        /// </summary>
+        public string? Name { get; set; }
+        
+        /// <summary>
+        /// Payers first name.
+        /// If the payer is a company, use only firstName.
+        /// </summary>
         public string? FirstName { get; set; }
 
+        /// <summary>
+        /// Payers first name.
+        /// If payer is a company, use only firstName.
+        /// </summary>
         public string? LastName { get; set; }
     
+        /// <summary>
+        /// Payers email address.
+        /// </summary>
         public EmailAddress? Email { get; set; }
 
-        public string? Msisdn { get; set; }
+        /// <summary>
+        /// Payers primary MSISDN.
+        /// Also known as phone number.
+        /// </summary>
+        public Msisdn? Msisdn { get; set; }
 
         /// <summary>
         /// Street address of the payers residence.

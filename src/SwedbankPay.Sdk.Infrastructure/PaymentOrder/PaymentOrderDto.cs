@@ -53,7 +53,7 @@ internal record PaymentOrderDto
     public PayeeInfoDto PayeeInfo { get; }
     public MetadataDto? Metadata { get; }
     
-    public RiskIndicatorDto RiskIndicator { get; }
-    public PayerDto Payer { get; }
+    public RiskIndicatorDto? RiskIndicator { get; }
+    public PayerDto? Payer { get; }
 
 }

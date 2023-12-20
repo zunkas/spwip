@@ -6,23 +6,32 @@ internal record PayerDto
 {
     public PayerDto(Sdk.PaymentOrder.Payer.Payer payer)
     {
-        Email = payer.Email?.ToString() ?? "";
-        Msisdn = payer.Msisdn ?? "";
-        WorkPhoneNumber = payer.WorkPhoneNumber ?? "";
-        HomePhoneNumber = payer.HomePhoneNumber ?? "";
-        BillingAddress = new BillingAddressDto(payer.BillingAddress);
-        ShippingAddress = new PickUpAddressDto(payer.ShippingAddress);
+        FirstName = payer.FirstName;
+        LastName = payer.LastName;
+        PayerReference = payer.PayerReference;
+        Email = payer.Email?.ToString();
+        Msisdn = payer.Msisdn?.ToString();
+        WorkPhoneNumber = payer.WorkPhoneNumber?.ToString();
+        HomePhoneNumber = payer.HomePhoneNumber?.ToString();
+        BillingAddress = new AddressDto(payer.BillingAddress);
+        ShippingAddress = new AddressDto(payer.ShippingAddress);
     }
-    
-    public string Email { get; }
 
-    public string Msisdn { get; }
+    public string? FirstName { get; }
+    
+    public string? LastName { get; }
+    
+    public string? PayerReference { get; }
+    
+    public string? Email { get; }
 
-    public string WorkPhoneNumber { get; }
+    public string? Msisdn { get; }
+
+    public string? WorkPhoneNumber { get; }
     
-    public string HomePhoneNumber { get; }
+    public string? HomePhoneNumber { get; }
     
-    public BillingAddressDto BillingAddress { get; }
+    public AddressDto? BillingAddress { get; }
     
-    public PickUpAddressDto ShippingAddress { get; }
+    public AddressDto? ShippingAddress { get; }
 }
