@@ -1,5 +1,6 @@
 using SwedbankPay.Sdk.Infrastructure.PaymentOrder.Metadata;
 using SwedbankPay.Sdk.Infrastructure.PaymentOrder.OrderItems;
+using SwedbankPay.Sdk.Infrastructure.PaymentOrder.Payer;
 using SwedbankPay.Sdk.Infrastructure.PaymentOrder.Urls;
 using SwedbankPay.Sdk.PaymentOrder;
 
@@ -26,6 +27,16 @@ internal record PaymentOrderDto
         {
             Metadata = new MetadataDto(paymentOrderRequest.Metadata);
         }
+
+        if (paymentOrderRequest.RiskIndicator != null)
+        {
+            RiskIndicator = new RiskIndicatorDto(paymentOrderRequest.RiskIndicator);
+        }
+
+        if (paymentOrderRequest.Payer != null)
+        {
+            Payer = new PayerDto(paymentOrderRequest.Payer);
+        }
     }
 
     public string Operation { get; }
@@ -41,4 +52,8 @@ internal record PaymentOrderDto
     public OrderItemRequestDto[]? OrderItems { get; }
     public PayeeInfoDto PayeeInfo { get; }
     public MetadataDto? Metadata { get; }
+    
+    public RiskIndicatorDto RiskIndicator { get; }
+    public PayerDto Payer { get; }
+
 }

@@ -1,4 +1,4 @@
-namespace SwedbankPay.Sdk;
+namespace SwedbankPay.Sdk.PaymentOrder.Address;
 
 /// <summary>
 ///     If shipIndicator set, then prefill

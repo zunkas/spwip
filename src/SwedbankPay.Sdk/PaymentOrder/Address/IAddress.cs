@@ -1,4 +1,4 @@
-namespace SwedbankPay.Sdk;
+namespace SwedbankPay.Sdk.PaymentOrder.Address;
 
 /// <summary>
 /// Holds shared information about a address.
