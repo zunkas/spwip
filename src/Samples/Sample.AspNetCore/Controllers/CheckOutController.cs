@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Sample.AspNetCore.Data;
@@ -24,6 +25,7 @@ namespace Sample.AspNetCore.Controllers;
 public class CheckOutController : Controller
 {
     private readonly Cart _cartService;
+    private readonly ILogger<CheckOutController> _logger;
     private readonly StoreDbContext _context;
     private readonly PayeeInfoConfig _payeeInfoOptions;
     private readonly ISwedbankPayClient _swedbankPayClient;
@@ -33,16 +35,22 @@ public class CheckOutController : Controller
     public CheckOutController(IOptionsSnapshot<PayeeInfoConfig> payeeInfoOptionsAccessor,
         IOptionsSnapshot<UrlsOptions> urlsAccessor,
         Cart cart,
+        ILogger<CheckOutController> logger,
         StoreDbContext storeDbContext,
         ISwedbankPayClient payClient)
     {
         _payeeInfoOptions = payeeInfoOptionsAccessor.Value;
         _urls = urlsAccessor.Value;
         _cartService = cart;
+        _logger = logger;
         _context = storeDbContext;
         _swedbankPayClient = payClient;
     }
 
+    public async Task Callback([FromBody]CallbackInfo callbackInfo)
+    {
+        _logger.LogInformation($"Callback received for id {callbackInfo.PaymentOrder.Id}", callbackInfo);
+    }
 
     public async Task<IPaymentOrderResponse> CreateOrUpdatePaymentOrder(string consumerProfileRef = null, Uri paymentUrl = null)
     {

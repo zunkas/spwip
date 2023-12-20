@@ -2,12 +2,9 @@ name: Dev
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 on:
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+  release:
+    types:
+      - created
 
 jobs:
   callVersion:
@@ -20,7 +17,7 @@ jobs:
     uses: ./.github/workflows/template_build.yml
     secrets: inherit 
     with:
-      Configuration: Debug
+      Configuration: Release
       NUGETVERSIONV2: ${{ needs.callVersion.outputs.NUGETVERSIONV2 }} 
       SlnPath: ./src/SwedbankPay.Sdk.sln
       SdkCsprojPath: ./src/SwedbankPay.Sdk.Infrastructure/SwedbankPay.Sdk.Infrastructure.csproj
